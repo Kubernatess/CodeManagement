@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="github.mybatis.dao.BranchMapper">
+
+<select id="getAllTitle" resultType="Branch">
+select title from branch where username = #{username}
+</select>
+
+<insert id="newBranch">
+insert into branch(title,code,save_time,username) values(#{title},#{code},#{saveTime},#{username})
+</insert>
+
+<update id="updateBranch">
+update branch set save_time=#{saveTime},code=#{code} where username = #{username} and title= #{title}
+</update>
+
+<select id="getAllBranch" resultType="Branch">
+select code from branch where username=#{username} and title=#{title}
+</select>
+
+<delete id="deleteBranch">
+delete from branch where username=#{username} and title=#{title}
+</delete>
+
+<select id="getRepository" resultType="branch">
+select title,save_time SaveTime from branch where username = #{username} order by save_time desc
+</select>
+
+</mapper>

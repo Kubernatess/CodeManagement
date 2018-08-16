@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="github.mybatis.dao.UserMapper">
+<select id="getUserByName" resultType="User">
+select * from userlist where username = #{username}
+</select>
+<select id="getAllUserName" resultType="User">
+select username from userlist
+</select>
+<insert id="addUser">
+insert into userlist(username,password) values(#{username},#{password})
+</insert>
+
+</mapper>
